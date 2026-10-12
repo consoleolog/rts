@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>티켓 목록 | RTS</title>
+	<link rel="stylesheet" href="../../krds/resources/css/component/output.css">
+	<link rel="stylesheet" href="../../css/rts.css">
+</head>
+<body>
+<div id="wrap">
+	<!-- 건너뛰기 링크 -->
+	<div id="krds-skip-link">
+		<a href="#contents">본문 바로가기</a>
+	</div>
+	<!-- //건너뛰기 링크 -->
+
+	<!-- header -->
+	<header id="krds-header">
+		<div class="header-in">
+			<div class="header-container">
+				<div class="inner">
+					<div class="header-utility">
+						<ul class="utility-list">
+							<li><span class="krds-btn small text">홍길동 님 (개발자)</span></li>
+							<li><a href="#" class="krds-btn small text">비밀번호 변경</a></li>
+							<li>
+								<!-- 로그아웃은 CSRF 토큰과 함께 POST로 보낸다 -->
+								<form action="#" method="post">
+									<button type="submit" class="krds-btn small text">
+										<i class="svg-icon ico-logout"></i> 로그아웃
+									</button>
+								</form>
+							</li>
+						</ul>
+					</div>
+					<div class="header-branding">
+						<h2 class="rts-logo">
+							<a href="list.html" class="rts-logo__link">
+								RTS<span class="rts-logo__desc">요구사항 추적 시스템</span>
+							</a>
+						</h2>
+						<div class="header-actions">
+							<button type="button" class="btn-navi all" aria-controls="mobile-nav">전체메뉴</button>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- 메인메뉴 : 데스크탑 -->
+			<nav class="krds-main-menu">
+				<div class="inner">
+					<ul class="gnb-menu">
+						<li>
+							<button type="button" class="gnb-main-trigger" data-trigger="gnb">티켓</button>
+							<div class="gnb-toggle-wrap">
+								<div class="gnb-main-list">
+									<ul>
+										<li><a href="list.html" class="gnb-sub-trigger is-link" data-trigger="gnb" aria-current="page">티켓 목록</a></li>
+										<li><a href="#" class="gnb-sub-trigger is-link" data-trigger="gnb">티켓 등록</a></li>
+									</ul>
+								</div>
+							</div>
+						</li>
+						<!-- 관리자에게만 노출 -->
+						<li>
+							<button type="button" class="gnb-main-trigger" data-trigger="gnb">관리</button>
+							<div class="gnb-toggle-wrap">
+								<div class="gnb-main-list">
+									<ul>
+										<li><a href="#" class="gnb-sub-trigger is-link" data-trigger="gnb">모듈 관리</a></li>
+										<li><a href="#" class="gnb-sub-trigger is-link" data-trigger="gnb">사용자 관리</a></li>
+									</ul>
+								</div>
+							</div>
+						</li>
+					</ul>
+				</div>
+			</nav>
+			<!-- //메인메뉴 : 데스크탑 -->
+		</div>
+
+		<!-- 메인메뉴 : 모바일 -->
+		<div id="mobile-nav" class="krds-main-menu-mobile">
+			<div class="gnb-wrap">
+				<div class="gnb-header">
+					<div class="gnb-login">
+						<span class="user">홍길동 님 (개발자)</span>
+					</div>
+				</div>
+				<div class="gnb-body">
+					<div class="gnb-menu">
+						<div class="menu-wrap">
+							<ul>
+								<li><a href="#mGnb-ticket" class="gnb-main-trigger active">티켓</a></li>
+								<li><a href="#mGnb-admin" class="gnb-main-trigger">관리</a></li>
+							</ul>
+						</div>
+						<div class="submenu-wrap">
+							<div class="gnb-sub-list" id="mGnb-ticket">
+								<h2 class="sub-title">티켓</h2>
+								<ul>
+									<li><a href="list.html" class="gnb-sub-trigger" aria-current="page">티켓 목록</a></li>
+									<li><a href="#" class="gnb-sub-trigger">티켓 등록</a></li>
+								</ul>
+							</div>
+							<div class="gnb-sub-list" id="mGnb-admin">
+								<h2 class="sub-title">관리</h2>
+								<ul>
+									<li><a href="#" class="gnb-sub-trigger">모듈 관리</a></li>
+									<li><a href="#" class="gnb-sub-trigger">사용자 관리</a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="gnb-bottom">
+						<a href="#" class="krds-btn medium text">비밀번호 변경 <i class="svg-icon ico-angle right"></i></a>
+					</div>
+				</div>
+				<button type="button" class="krds-btn medium icon" id="close-nav">
+					<span class="sr-only">전체메뉴 닫기</span>
+					<i class="svg-icon ico-popup-close"></i>
+				</button>
+			</div>
+		</div>
+		<!-- //메인메뉴 : 모바일 -->
+	</header>
+	<!-- //header -->
+
+	<!-- container -->
+	<div id="container">
+		<div class="inner rts-layout">
+			<!-- 사이드 메뉴 -->
+			<nav class="krds-side-navigation rts-layout__side" aria-label="티켓 메뉴">
+				<h2 class="lnb-tit">티켓</h2>
+				<ul class="lnb-list">
+					<li class="lnb-item">
+						<a href="list.html" class="lnb-btn lnb-link active" aria-current="page">티켓 목록</a>
+					</li>
+					<li class="lnb-item">
+						<a href="#" class="lnb-btn lnb-link">티켓 등록</a>
+					</li>
+				</ul>
+			</nav>
+			<!-- //사이드 메뉴 -->
+
+			<main class="rts-layout__main" id="contents">
+				<!-- breadcrumb -->
+				<nav class="krds-breadcrumb-wrap" aria-label="현재 경로">
+					<ol class="breadcrumb">
+						<li class="home"><a href="list.html" class="txt">홈</a></li>
+						<li><a href="list.html" class="txt">티켓</a></li>
+						<li><a href="list.html" class="txt" aria-current="page">티켓 목록</a></li>
+					</ol>
+				</nav>
+				<!-- //breadcrumb -->
+
+				<div class="rts-page-title">
+					<h1 class="rts-page-title__heading">티켓 목록</h1>
+					<p class="rts-page-title__desc">요구사항(REQ), 변경요청(CR), 결함(BUG) 티켓을 조회합니다.</p>
+				</div>
+
+				<!-- 검색 -->
+				<form class="rts-search" action="list.html" method="get" role="search" aria-label="티켓 검색">
+					<fieldset>
+						<legend class="sr-only">티켓 검색 조건</legend>
+						<div class="rts-search__fields">
+							<div class="form-group rts-search__field">
+								<div class="form-tit"><label for="search-type">유형</label></div>
+								<div class="form-conts">
+									<select id="search-type" name="type" class="krds-form-select medium">
+										<option value="">전체</option>
+										<option value="REQ">요구사항 (REQ)</option>
+										<option value="CR">변경요청 (CR)</option>
+										<option value="BUG">결함 (BUG)</option>
+									</select>
+								</div>
+							</div>
+							<div class="form-group rts-search__field">
+								<div class="form-tit"><label for="search-module">모듈</label></div>
+								<div class="form-conts">
+									<select id="search-module" name="module" class="krds-form-select medium">
+										<option value="">전체</option>
+										<option value="RNT">대여 (RNT)</option>
+										<option value="RTN">반납 (RTN)</option>
+										<option value="USR">사용자 (USR)</option>
+									</select>
+								</div>
+							</div>
+							<div class="form-group rts-search__field">
+								<div class="form-tit"><label for="search-status">상태</label></div>
+								<div class="form-conts">
+									<select id="search-status" name="status" class="krds-form-select medium">
+										<option value="">전체</option>
+										<option value="REGISTERED">등록</option>
+										<option value="REVIEW">검토</option>
+										<option value="APPROVED">승인</option>
+										<option value="IN_PROGRESS">진행</option>
+										<option value="DONE">완료</option>
+										<option value="CANCELED">취소</option>
+									</select>
+								</div>
+							</div>
+							<div class="form-group rts-search__field">
+								<div class="form-tit"><label for="search-assignee">담당자</label></div>
+								<div class="form-conts">
+									<select id="search-assignee" name="assignee" class="krds-form-select medium">
+										<option value="">전체</option>
+										<option value="hong">홍길동</option>
+										<option value="kim">김철수</option>
+										<option value="lee">이영희</option>
+									</select>
+								</div>
+							</div>
+							<div class="form-group rts-search__field rts-search__field--keyword">
+								<div class="form-tit"><label for="search-keyword">검색어</label></div>
+								<div class="form-conts">
+									<input type="text" id="search-keyword" name="keyword" class="krds-input medium" placeholder="티켓 ID 또는 제목">
+								</div>
+							</div>
+						</div>
+						<div class="rts-search__actions">
+							<a href="list.html" class="krds-btn medium tertiary">초기화</a>
+							<button type="submit" class="krds-btn medium primary">
+								<i class="svg-icon ico-sch"></i> 검색
+							</button>
+						</div>
+					</fieldset>
+				</form>
+				<!-- //검색 -->
+
+				<!-- 목록 상단 -->
+				<div class="rts-list-top">
+					<p class="rts-list-top__total" aria-live="polite">총 <strong class="rts-list-top__count">128</strong>건</p>
+					<!-- 관리자, 개발자에게만 노출 -->
+					<a href="#" class="krds-btn medium primary">티켓 등록</a>
+				</div>
+				<!-- //목록 상단 -->
+
+				<!-- 목록 -->
+				<div class="krds-table-wrap mob-scroll">
+					<table class="tbl col data rts-table">
+						<caption>티켓 목록: 티켓 ID, 유형, 모듈, 제목, 상태, 담당자, 등록일로 구성</caption>
+						<colgroup>
+							<col style="width: 15%;">
+							<col style="width: 10%;">
+							<col style="width: 8%;">
+							<col>
+							<col style="width: 8%;">
+							<col style="width: 10%;">
+							<col style="width: 12%;">
+						</colgroup>
+						<thead>
+						<tr>
+							<th scope="col">티켓 ID</th>
+							<th scope="col">유형</th>
+							<th scope="col">모듈</th>
+							<th scope="col">제목</th>
+							<th scope="col">상태</th>
+							<th scope="col">담당자</th>
+														<th scope="col">등록일</th>
+						</tr>
+						</thead>
+						<tbody>
+						<tr>
+							<td class="rts-table__cell--nowrap">REQ-RTN-003</td>
+							<td>요구사항</td>
+							<td>반납</td>
+							<td class="rts-table__cell--title"><a href="#" class="krds-btn link basic medium rts-table__link"><span class="underline">연체 반납 시 연체료 자동 계산</span></a></td>
+							<td><span class="krds-badge bg-light-gray">등록</span></td>
+							<td>홍길동</td>
+							<td class="rts-table__cell--nowrap">2026-10-12</td>
+						</tr>
+						<tr>
+							<td class="rts-table__cell--nowrap">CR-RNT-012</td>
+							<td>변경요청</td>
+							<td>대여</td>
+							<td class="rts-table__cell--title"><a href="#" class="krds-btn link basic medium rts-table__link"><span class="underline">대여 신청 화면 필수 입력 항목 변경</span></a></td>
+							<td><span class="krds-badge bg-light-warning">검토</span></td>
+							<td>이영희</td>
+							<td class="rts-table__cell--nowrap">2026-10-11</td>
+						</tr>
+						<tr>
+							<td class="rts-table__cell--nowrap">REQ-USR-007</td>
+							<td>요구사항</td>
+							<td>사용자</td>
+							<td class="rts-table__cell--title"><a href="#" class="krds-btn link basic medium rts-table__link"><span class="underline">비밀번호 5회 오류 시 계정 잠금</span></a></td>
+							<td><span class="krds-badge bg-light-information">승인</span></td>
+							<td>김철수</td>
+							<td class="rts-table__cell--nowrap">2026-10-10</td>
+						</tr>
+						<tr>
+							<td class="rts-table__cell--nowrap">BUG-RTN-021</td>
+							<td>결함</td>
+							<td>반납</td>
+							<td class="rts-table__cell--title"><a href="#" class="krds-btn link basic medium rts-table__link"><span class="underline">반납일이 주말이면 연체일수가 하루 더 계산됨</span></a></td>
+							<td><span class="krds-badge bg-light-primary">진행</span></td>
+							<td>홍길동</td>
+							<td class="rts-table__cell--nowrap">2026-10-08</td>
+						</tr>
+						<tr>
+							<td class="rts-table__cell--nowrap">REQ-RNT-005</td>
+							<td>요구사항</td>
+							<td>대여</td>
+							<td class="rts-table__cell--title"><a href="#" class="krds-btn link basic medium rts-table__link"><span class="underline">대여 가능 수량 실시간 표시</span></a></td>
+							<td><span class="krds-badge bg-light-success">완료</span></td>
+							<td>이영희</td>
+							<td class="rts-table__cell--nowrap">2026-10-02</td>
+						</tr>
+						<tr>
+							<td class="rts-table__cell--nowrap">CR-USR-002</td>
+							<td>변경요청</td>
+							<td>사용자</td>
+							<td class="rts-table__cell--title"><a href="#" class="krds-btn link basic medium rts-table__link"><span class="underline">회원 탈퇴 시 개인정보 보관 기간 변경</span></a></td>
+							<td><span class="krds-badge bg-light-disabled">취소</span></td>
+							<td>-</td>
+							<td class="rts-table__cell--nowrap">2026-09-29</td>
+						</tr>
+						<!-- 조회 결과가 없을 때
+						<tr>
+							<td colspan="7">조회된 티켓이 없습니다.</td>
+						</tr>
+						-->
+						</tbody>
+					</table>
+				</div>
+				<!-- //목록 -->
+
+				<!-- pagination -->
+				<nav class="krds-pagination" aria-label="페이지 이동">
+					<span class="page-navi prev disabled">이전</span>
+					<div class="page-links">
+						<a class="page-link active" href="#" aria-current="page"><span class="sr-only">현재페이지 </span>1</a>
+						<a class="page-link" href="#">2</a>
+						<a class="page-link" href="#">3</a>
+						<a class="page-link" href="#">4</a>
+						<a class="page-link" href="#">5</a>
+						<span class="page-link link-dot"></span>
+						<a class="page-link" href="#">7</a>
+					</div>
+					<a class="page-navi next" href="#">다음</a>
+				</nav>
+				<!-- //pagination -->
+			</main>
+		</div>
+	</div>
+	<!-- //container -->
+
+	<!-- footer -->
+	<footer id="krds-footer">
+		<div class="inner">
+			<div class="f-btm">
+				<div class="f-btm-text">
+					<p class="f-copy">RTS (Requirement Traceability System)</p>
+				</div>
+			</div>
+		</div>
+	</footer>
+	<!-- //footer -->
+</div>
+
+<script src="../../krds/resources/js/component/ui-script.js"></script>
+</body>
+</html>

@@ -1,0 +1,172 @@
+@charset "UTF-8";
+/*
+ * RTS 전용 스타일
+ * - KRDS 컴포넌트(krds/resources/css/component/output.css)로 해결되지 않는 것만 작성한다.
+ * - 클래스는 rts- 접두어 + BEM(block__element--modifier)으로 짓는다.
+ * - 값은 KRDS 디자인 토큰(--krds-*)을 쓴다.
+ */
+
+/* 폰트: KRDS 토큰은 'Pretendard GOV'를 쓰지만 @font-face를 제공하지 않아 로컬 폰트를 등록한다 (폐쇄망) */
+@font-face {
+  font-family: "Pretendard GOV";
+  font-weight: 400;
+  font-display: swap;
+  src: url("../krds/resources/fonts/PretendardGOV-Regular.subset.woff2") format("woff2"),
+       url("../krds/resources/fonts/PretendardGOV-Regular.subset.woff") format("woff");
+}
+@font-face {
+  font-family: "Pretendard GOV";
+  font-weight: 500;
+  font-display: swap;
+  src: url("../krds/resources/fonts/PretendardGOV-Medium.subset.woff2") format("woff2"),
+       url("../krds/resources/fonts/PretendardGOV-Medium.subset.woff") format("woff");
+}
+@font-face {
+  font-family: "Pretendard GOV";
+  font-weight: 700;
+  font-display: swap;
+  src: url("../krds/resources/fonts/PretendardGOV-Bold.subset.woff2") format("woff2"),
+       url("../krds/resources/fonts/PretendardGOV-Bold.subset.woff") format("woff");
+}
+
+/* 로고: KRDS 로고 이미지 대신 텍스트 로고 */
+.rts-logo__link {
+  display: inline-flex;
+  align-items: baseline;
+  gap: var(--krds-gap-3);
+  font-size: var(--krds-pc-font-size-heading-large);
+  font-weight: var(--krds-font-weight-bold);
+  color: var(--krds-light-color-text-primary);
+}
+.rts-logo__desc {
+  font-size: var(--krds-pc-font-size-body-medium);
+  font-weight: var(--krds-font-weight-regular);
+  color: var(--krds-light-color-text-subtle);
+}
+
+/* 레이아웃: 사이드 메뉴 + 본문 (KRDS 홈페이지 패턴, 키트에 없어 작성) */
+.rts-layout {
+  display: flex;
+  gap: var(--krds-pc-gap-layout-left-contents);
+  padding-bottom: var(--krds-pc-gap-layout-contents-footer);
+}
+.rts-layout__side {
+  flex-shrink: 0;
+  width: 24.8rem;
+  padding-top: var(--krds-padding-8);
+}
+.rts-layout__main {
+  flex: 1;
+  min-width: 0;
+}
+
+/* 페이지 제목 */
+.rts-page-title {
+  display: flex;
+  flex-direction: column;
+  gap: var(--krds-pc-gap-layout-title-body-large);
+  margin-bottom: var(--krds-pc-gap-layout-h1-h2);
+}
+.rts-page-title__heading {
+  font-size: var(--krds-pc-font-size-heading-xlarge);
+  font-weight: var(--krds-font-weight-bold);
+}
+.rts-page-title__desc {
+  font-size: var(--krds-pc-font-size-body-large);
+  color: var(--krds-light-color-text-subtle);
+}
+
+/* 검색 영역 */
+.rts-search {
+  padding: var(--krds-padding-8);
+  border-radius: var(--krds-radius-xlarge1);
+  background-color: var(--krds-light-color-surface-secondary-subtler);
+}
+.rts-search__fields {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr)) minmax(0, 2fr);
+  gap: var(--krds-gap-5);
+}
+.rts-search__actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--krds-gap-3);
+  margin-top: var(--krds-gap-7);
+}
+
+/* 목록 상단: 총 건수 + 버튼 */
+.rts-list-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--krds-gap-5);
+  margin: var(--krds-pc-gap-layout-h2-h3) 0 var(--krds-gap-5);
+}
+.rts-list-top__total {
+  font-size: var(--krds-pc-font-size-body-large);
+  font-weight: var(--krds-font-weight-bold);
+}
+.rts-list-top__count {
+  color: var(--krds-light-color-text-primary);
+}
+
+/* 표 셀 */
+.rts-table__cell--title {
+  text-align: left;
+}
+.rts-table__cell--nowrap {
+  white-space: nowrap;
+}
+/* KRDS .krds-btn.link 가 white-space: normal 을 지정해 셀 설정(모바일 mob-scroll 의 nowrap)을 따르게 한다 */
+.rts-table .rts-table__link {
+  white-space: inherit;
+}
+
+@media (max-width: 1023px) {
+  .rts-layout__side {
+    display: none;
+  }
+  .rts-search__fields {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .rts-search__field--keyword {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 767px) {
+  .rts-logo__link {
+    font-size: var(--krds-mobile-font-size-heading-large);
+  }
+  .rts-logo__desc {
+    display: none;
+  }
+  .rts-page-title {
+    gap: var(--krds-mobile-gap-layout-title-body-large);
+    margin-bottom: var(--krds-mobile-gap-layout-h1-h2);
+  }
+  .rts-page-title__heading {
+    font-size: var(--krds-mobile-font-size-heading-xlarge);
+  }
+  .rts-page-title__desc {
+    font-size: var(--krds-mobile-font-size-body-large);
+  }
+  .rts-search {
+    padding: var(--krds-padding-6);
+  }
+  .rts-search__fields {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .rts-search__actions .krds-btn {
+    flex: 1;
+  }
+  .rts-layout {
+    padding-bottom: var(--krds-mobile-gap-layout-contents-footer);
+  }
+  .rts-list-top {
+    margin-top: var(--krds-mobile-gap-layout-h2-h3);
+  }
+  .rts-list-top__total {
+    font-size: var(--krds-mobile-font-size-body-large);
+  }
+}
