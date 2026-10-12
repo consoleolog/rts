@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.29.xsd">
+
+    <!--
+        변경분은 changes/ 아래에 번호를 붙여 추가하고 여기에 include 한다.
+        예) <include file="db/changelog/changes/001-init-schema.xml"/>
+        이미 적용된 changeSet은 수정하지 말고 새 changeSet으로 고친다.
+    -->
+
+</databaseChangeLog>
